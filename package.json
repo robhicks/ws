@@ -16,6 +16,7 @@
   "author": "Einar Otto Stangvik <einaros@gmail.com> (http://2x.io)",
   "license": "MIT",
   "main": "index.js",
+  "module": "index.mjs",
   "browser": "browser.js",
   "engines": {
     "node": ">=8.3.0"
@@ -23,9 +24,11 @@
   "files": [
     "browser.js",
     "index.js",
+    "index.mjs",
     "lib/*.js"
   ],
   "scripts": {
+    "build": "npx rollup -c",
     "test": "nyc --reporter=lcov --reporter=text mocha --throw-deprecation test/*.test.js",
     "integration": "mocha --throw-deprecation test/*.integration.js",
     "lint": "eslint --ignore-path .gitignore . && prettier --check --ignore-path .gitignore \"**/*.{json,md,yaml,yml}\""
@@ -52,5 +55,10 @@
     "nyc": "^15.0.0",
     "prettier": "^2.0.5",
     "utf-8-validate": "^5.0.2"
+  },
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "rollup": "^2.52.4"
   }
 }
